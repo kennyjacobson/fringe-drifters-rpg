@@ -10,10 +10,12 @@
     "setup-directories": "node scripts/metadata/setup-directories.js",
     "collect-metadata": "node scripts/metadata/metadata-collector.js",
     "analyze-metadata": "node scripts/metadata/metadata-analyzer.js",
+    "scrape-compendium": "node scripts/metadata/compendium-scraper.js",
     "metadata-pipeline": "npm run setup-directories && npm run collect-metadata && npm run analyze-metadata"
   },
   "devDependencies": {
     "axios": "^1.8.3",
+    "jsdom": "^26.0.0",
     "prettier": "^3.5.3",
     "turbo": "^2.4.4",
     "typescript": "5.8.2"
