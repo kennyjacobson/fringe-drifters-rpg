@@ -1,5 +1,6 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
+import { Card } from "@repo/ui/card";
 import styles from "./page.module.css";
 
 type Props = Omit<ImageProps, "src"> & {
@@ -32,6 +33,9 @@ export default function Home() {
           priority
         />
         <ol>
+          <li>
+            This is the WEB "app"
+          </li>
           <li>
             Get started by editing <code>apps/web/app/page.tsx</code>
           </li>
@@ -66,6 +70,9 @@ export default function Home() {
         <Button appName="web" className={styles.secondary}>
           Open alert
         </Button>
+        <Card className={styles.card} title="Card Title" href="https://www.google.com">
+          <p>Card Content</p>
+        </Card>
       </main>
       <footer className={styles.footer}>
         <a
