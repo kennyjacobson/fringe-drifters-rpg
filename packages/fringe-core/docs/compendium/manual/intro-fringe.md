@@ -1,0 +1,25 @@
+# THE FRINGE
+The Fringe is a colloquial term for the cluster of star systems outside the Beshtala-Chanko public transit routes. The space is unincorporated, not governed by any legal or political entity, making it a sandbox for the more extreme spectrum of corporate, religious, criminal, and entrepreneurial activity.
+
+## Early Settlement - The Powerball Boom
+Initial settlement of The Fringe was driven by the burgeoning Powerball industry after their discovery on Earlie Prime by Man Earlie's Expeditionary Society. With appetites whet in Beshtala-Chanko for this powerful new energy source, Earlie expanded his humble harvesting and refining operation into the Round Power Corporation, eventually partnering with Dugall Freight to forge the first shipping routes into The Fringe.
+
+At first, Round Power enjoyed a period of rapid expansion in isolation, but their success incited a growing demand for further private speculation in The Fringe. Dugall Freight was poised and eager to meet this demand, but Earlie insisted on exclusive transportation rights to their lines, ultimately triggering the Freight Wars.
+
+## The Freight Wars
+The Freight Wars marked the first major conflict indigenous to The Fringe. Having successfully recruited nearly all nearby asteroid rustlers, Earlie turned their fleet of small, agile skiffs against any Dugall freighters passing through Round Power space. This private army of rustlers-turned-mercs developed their own unique style of EVA combat, using their mining equipment to disable reactors, leaving passengers and cargo stranded. But when the infamous account of The Feigngull Massacre (in which Earlie's rustlers evacced the entire passenger cabin) was reported in The Maven, money and support from Beshtala-Chanko began to flow toward Dugall.
+
+As both armies ballooned over the course of the following years, Earlie would crystalize his reputation as a haphazard diplomat, forging flippant alliances to suit his immediate needs. The result was a sprawling, yet fragmented collection of interests fighting on behalf of Round Power. Many still debate whether Earlie's Fringeling Army was the product of desperate flailing or masterfully-sown chaos. Despite their constant state of disarray and pockets of in-fighting, Earlie's Army developed a reputation for tactical savagery and their unpredictable moves confounded many a seasoned Dugall commander.
+
+Ironically, despite Earlie's intention to maintain exclusive control, many attribute the diverse cultural foundation of The Fringe to his eclectic army. The conflict catalyzed growth, creating a variety of opportunities and consequently, population and infrastructure steadily expanded over the course of the wars.
+
+The future of The Fringe was inevitable...but so was Earlie's fate. Though Earlie garnered niche support in Beshtala-Chanko as an entrepreneurial upstart, Dugall had been a leviathan for generations. All of Earlie's prolific canvassing was no match for the faucet of money and political influence flowing into Dugall's ranks.
+
+Earlie would fight ravenously for exclusive sway over The Fringe, launching vehement attacks on Dugall Freighters until his death. His family cited the cause of death as infection, though conspiracy theories of patricide still have purchase with Man Earlie loyalists and Freight Wars revivalists.
+
+By the time of Earlie's death, the signs were clear. Dugall had been successfully slogging all manner of passengers into The Fringe for years and despite the looming threat of attack, demand for access to the frontier continued to explode. When Klem Earlie - Man Earlie's daughter - assumed control of Round Power, she immediately disbanded her father's corporate army and put a stop to the attacks. The Freight Wars were over and the floodgates to The Fringe flung wide open.
+
+## The Fringe Today
+As the fervor at the height of the Powerball boom waned, The Fringe evolved into a rich bacterial culture of human experiments. Migrants flooded in, weaving a dense tapestry of chaos, disparate interests all crashing into each other. Scientific expeditions and corporate speculation expanded freight lines to new planets with novel opportunities for resource exploitation. Behind them, a wave of profiteers and outlaws, looking to capitalize off this unregulated tract of space. The absence of centralized authority also made The Fringe fertile soil for religious and ideological extremists, political outcasts, and obscure disenfranchised tribes.
+
+The Fringe has more than earned its reputation as the most dangerous sector of the Occupied Spaces, but the allure of its unbridled freedom, its litany of prospects and success stories, and the promise of escape for fugitives and desperates alike keep a steady flow of new migrants looking to test their mettle in the wildest reaches of known space.

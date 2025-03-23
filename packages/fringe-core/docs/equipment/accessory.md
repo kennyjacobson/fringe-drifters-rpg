@@ -1,5 +1,13 @@
 # Fringe Drifters Accessories
-Converting Fringe Drifters accessories into D&D-style weapon stats.
+
+## Implementation Notes
+When calculating a character's weapon damage:
+1. Check if character has a Mech Suit equipped
+   - If YES: Use Mech Suit's damage and ignore standard accessory slot
+   - If NO: Use standard accessory slot's damage
+2. For Armor Class:
+   - Mech Suits override both standard armor and accessory bonuses
+   - Standard equipment uses normal armor + accessory calculations
 
 ## Format
 Each accessory is documented with:
@@ -9,7 +17,7 @@ Each accessory is documented with:
 
 ## Progress Tracker
 Total accessories to document: 55
-Completed: 19
+Completed: 32
 
 ## Accessories
 
@@ -107,3 +115,89 @@ Completed: 19
 - Damage: 1d10 bludgeoning
 - Properties: Heavy, Special (Negates vibration damage to user)
 - Industrial Use: Construction and stonework
+
+### Cream Steamer
+- Damage: 2d6 fire + 1d4 acid
+- Properties: Loading, Special (Creates lingering fire damage in target area)
+- Industrial Use: Chemical dispersal and industrial cleaning
+
+### Flocker
+- Damage: 1d4 bludgeoning
+- Properties: Special (Can entangle targets), Range (30/60)
+- Industrial Use: Pest control and specimen collection
+
+### Candlestick
+- Damage: 1d8 (varies by ammunition)
+- Properties: Loading, Special (Can use different ammunition types)
+- Industrial Use: Emergency signaling and illumination
+
+### Soaker
+- Damage: 2d4 acid
+- Properties: Special (Causes ongoing acid damage), Range (15/30)
+- Industrial Use: Chemical application and surface treatment
+
+### Soapy
+- Damage: 1d10 piercing
+- Properties: Loading, Quiet
+- Industrial Use: Precision hunting and specimen collection
+
+### Bolt Harp
+- Damage: 1d8 piercing
+- Properties: Loading, Range (60/120), Special (6-shot cylinder with rapid fire capability)
+- Industrial Use: Hunting and game collection
+
+### Cove Carver
+- Damage: 2d6 piercing
+- Properties: Loading, Range (40/120), Special (Can recharge spent ammunition for low-power shots)
+- Industrial Use: Security and defense operations
+
+### Faulk's Icepick
+- Damage: 2d10 piercing
+- Properties: Heavy, Loading, Range (150/600)
+- Industrial Use: Long-range specimen collection and large game hunting
+
+### Roulette
+- Damage: 1d8 (varies by ammunition)
+- Properties: Loading, Special (Can sequence different ammunition types)
+- Industrial Use: Multi-purpose signaling and emergency response
+
+### Hull Hooker
+- Damage: 1d6 piercing
+- Properties: Special (Can grapple to surfaces), Reach
+- Industrial Use: Ship maintenance and hull repair
+
+### Prongseat
+- Damage: 2d8 force
+- Properties: Heavy, Special (Vehicle mount, can be used for aerial maneuvers)
+- Industrial Use: Reconnaissance and emergency response operations
+
+### Heavy Spigot
+- Damage: 2d8 slashing
+- Properties: Heavy, Two-handed, Special (Execution-style attacks)
+- Industrial Use: Heavy material processing and demolition
+
+### Straight Smile
+- Damage: 1d10 slashing
+- Properties: Finesse, Special (Serrated blade causes additional bleeding damage)
+- Industrial Use: Material cutting and precision shearing
+
+## Mech Suits
+Mech suits provide both offensive capabilities and defensive protection. These suits replace both the standard armor and accessory slots for a character.
+
+### Hand Cannon Mech
+- Damage: 4d10 force
+- Properties: Heavy, Loading, Range (80/240), Special (Can disintegrate targets on critical hits)
+- Armor Class: 16
+- Industrial Use: Rock demolition and long-range mining operations
+
+### Vice Grip Mech
+- Damage: 2d12 bludgeoning + 2d8 crushing
+- Properties: Heavy, Special (Can grapple targets, dealing automatic crushing damage while grappled)
+- Armor Class: 17
+- Industrial Use: Ore crushing and heavy material manipulation
+
+### Bore Master Mech
+- Damage: 3d6 piercing
+- Properties: Heavy, Special (Can drill through solid materials)
+- Armor Class: 15
+- Industrial Use: Mining operations and tunnel boring
