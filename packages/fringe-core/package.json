@@ -1,0 +1,46 @@
+{
+    "name": "@fringe-rpg/core",
+    "version": "0.1.0",
+    "private": true,
+    "description": "Core trait-to-attribute conversion logic for Fringe RPG",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+      "build": "tsup src/index.ts --format cjs,esm --dts",
+      "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+      "lint": "eslint .",
+      "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+      "generate:db": "ts-node --project scripts/tsconfig.json scripts/generateEquipmentDb.ts",
+      "prebuild": "npm run generate:db",
+      "test": "jest"
+    },
+    "dependencies": {
+      "typescript": "^5.3.3"
+    },
+    "devDependencies": {
+      "@types/node": "^20.11.24",
+      "eslint": "^8.57.0",
+      "ts-node": "^10.9.2",
+      "tsup": "^8.0.2"
+    },
+    "files": [
+      "dist",
+      "README.md"
+    ],
+    "publishConfig": {
+      "access": "public"
+    },
+    "keywords": [
+      "fringe",
+      "rpg",
+      "nft",
+      "game"
+    ],
+    "author": "Fringe RPG Team",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/your-org/fringe-rpg.git",
+      "directory": "packages/fringe-core"
+    }
+  }

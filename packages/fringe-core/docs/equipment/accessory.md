@@ -14,6 +14,7 @@ Each accessory is documented with:
 - Damage: [dice] [type]
 - Properties: [heavy/light/etc]
 - Industrial Use: [primary non-combat function]
+- Ability Modifier: [STR/CHA/CON/etc]
 
 ## Progress Tracker
 Total accessories to document: 55
@@ -25,16 +26,19 @@ Completed: 32
 - Damage: 2d8 bludgeoning
 - Properties: Heavy, Two-handed
 - Industrial Use: Breaking rock and minerals
+- Ability Modifier: +2 STR
 
 ### The Shriek
 - Damage: 1d4 psychic
 - Properties: Range (60/120)
 - Industrial Use: Communication and signal interception
+- Ability Modifier: +1 CHA
 
 ### Round Foot
 - Damage: 1d10 bludgeoning
 - Properties: Heavy
 - Industrial Use: Ground compacting and material processing
+- Ability Modifier: +1 STR
 
 ### The Spunker
 - Damage: 1d8 piercing
@@ -45,6 +49,7 @@ Completed: 32
 - Damage: 1d6 piercing
 - Properties: Light, Finesse, Special
 - Industrial Use: Rock sampling and mineral vein exploration
+- Ability Modifier: +1 DEX
 
 ### Chainflicker
 - Damage: 2d6 slashing
@@ -60,6 +65,7 @@ Completed: 32
 - Damage: 4d8 force
 - Properties: Heavy, Two-handed, Loading, Special
 - Industrial Use: Industrial cutting and hull penetration
+- Ability Modifier: +1 INT (Complex weapon operation)
 
 ### Reef Sweeper
 - Damage: 1d8 slashing
@@ -85,6 +91,7 @@ Completed: 32
 - Damage: 1d6 bludgeoning + 2d6 crushing on grapple
 - Properties: Special (On hit, can attempt to grapple. While grappling, deals crushing damage), Reach
 - Industrial Use: Resource harvesting and material extraction
+- Ability Modifier: +1 STR
 
 ### The Slipper
 - Damage: 1d8 slashing
@@ -110,11 +117,13 @@ Completed: 32
 - Damage: 2d4 acid
 - Properties: Special (Can use different damage types based on loaded substance), Range (20/60)
 - Industrial Use: Chemical application and medical treatment
+- Ability Modifier: +1 INT (Chemical knowledge required)
 
 ### Steady Hammer
 - Damage: 1d10 bludgeoning
 - Properties: Heavy, Special (Negates vibration damage to user)
 - Industrial Use: Construction and stonework
+- Ability Modifier: +1 CON (Vibration resistance)
 
 ### Cream Steamer
 - Damage: 2d6 fire + 1d4 acid
@@ -155,6 +164,7 @@ Completed: 32
 - Damage: 2d10 piercing
 - Properties: Heavy, Loading, Range (150/600)
 - Industrial Use: Long-range specimen collection and large game hunting
+- Ability Modifier: +1 WIS (Long-range precision)
 
 ### Roulette
 - Damage: 1d8 (varies by ammunition)
@@ -170,6 +180,7 @@ Completed: 32
 - Damage: 2d8 force
 - Properties: Heavy, Special (Vehicle mount, can be used for aerial maneuvers)
 - Industrial Use: Reconnaissance and emergency response operations
+- Ability Modifier: +1 DEX (Aerial maneuvering)
 
 ### Heavy Spigot
 - Damage: 2d8 slashing
@@ -180,6 +191,7 @@ Completed: 32
 - Damage: 1d10 slashing
 - Properties: Finesse, Special (Serrated blade causes additional bleeding damage)
 - Industrial Use: Material cutting and precision shearing
+- Ability Modifier: +1 DEX (Finesse weapon mastery)
 
 ## Mech Suits
 Mech suits provide both offensive capabilities and defensive protection. These suits replace both the standard armor and accessory slots for a character.
@@ -189,15 +201,18 @@ Mech suits provide both offensive capabilities and defensive protection. These s
 - Properties: Heavy, Loading, Range (80/240), Special (Can disintegrate targets on critical hits)
 - Armor Class: 16
 - Industrial Use: Rock demolition and long-range mining operations
+- Ability Modifiers: +2 STR, +1 CON
 
 ### Vice Grip Mech
 - Damage: 2d12 bludgeoning + 2d8 crushing
 - Properties: Heavy, Special (Can grapple targets, dealing automatic crushing damage while grappled)
 - Armor Class: 17
 - Industrial Use: Ore crushing and heavy material manipulation
+- Ability Modifiers: +3 STR, +1 CON
 
 ### Bore Master Mech
 - Damage: 3d6 piercing
 - Properties: Heavy, Special (Can drill through solid materials)
 - Armor Class: 15
 - Industrial Use: Mining operations and tunnel boring
+- Ability Modifiers: +2 STR, +1 INT
