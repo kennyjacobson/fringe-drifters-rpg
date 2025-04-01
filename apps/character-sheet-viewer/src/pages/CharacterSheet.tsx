@@ -75,6 +75,19 @@ export function CharacterSheet() {
     }
   }, [drifterId]);
 
+  // Add this helper function inside the component
+  const getFactionRelations = () => {
+    const relations: Record<string, string> = {};
+    Object.values(data?.equipment || {}).forEach(item => {
+      if (item?.factionRelations) {
+        Object.entries(item.factionRelations).forEach(([faction, relation]) => {
+          relations[faction] = relation;
+        });
+      }
+    });
+    return relations;
+  };
+
   if (error) {
     return <div>Error: {error.message}</div>;
   }
@@ -135,7 +148,7 @@ export function CharacterSheet() {
           <CardHeader>
             <h2 className="text-xl font-semibold">Ability Scores</h2>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {Object.entries(data.abilityScores).map(([ability, score]) => (
                 <div key={ability} className="text-center p-4 border rounded-lg">
@@ -148,6 +161,23 @@ export function CharacterSheet() {
                 </div>
               ))}
             </div>
+
+            {/* Add Faction Relations section inside the Ability Scores card */}
+            {Object.keys(getFactionRelations()).length > 0 && (
+              <div>
+                <h3 className="text-lg font-semibold mb-3">Faction Relations</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {Object.entries(getFactionRelations()).map(([faction, relation]) => (
+                    <div key={faction} className="flex items-center gap-2 p-2 border rounded">
+                      <div className="flex-1">
+                        <div className="font-medium">{faction}</div>
+                        <div className="text-sm text-gray-600">{relation}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
