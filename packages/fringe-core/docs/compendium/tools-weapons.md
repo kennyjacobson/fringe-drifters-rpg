@@ -352,7 +352,7 @@ In a world governed by rails, the heavy axe is an arcane choice. Lest one has sc
 
 ---
 
-## Straight Smile
+## The Straight Smile
 
 ![Straight Smile](https://compendium.fringedrifters.com/storage/Lz8ottNRA8sgGxArre0T3mJVp3PgolIPyAhMCiND.png)
 

@@ -29,6 +29,18 @@ When calculating a character's damage and armour class:
 - Ability Modifier: +2 CON
 - Industrial Use: Mining and high-temperature work environments
 
+### Kreegal Cloak
+- Type: Light Armor
+- Armor Class: 12 + Dexterity modifier (maximum +3)
+- Properties: Weather-Resistant, Breathable
+- Environmental Protection:
+  - Water: +3
+  - Heat: +2
+  - Pressure: +1
+- Ability Modifier: +1 WIS
+- Special: Advantage on Survival checks in humid environments
+- Industrial Use: Research expeditions and Grove exploration
+
 ### Grounder Pounder
 - Type: Heavy Armor
 - Armor Class: 16 + Dexterity modifier (maximum +1)
@@ -66,7 +78,7 @@ When calculating a character's damage and armour class:
 - Ability Modifier: +1 DEX
 - Industrial Use: Agricultural work and light combat
 
-### Prongshell (Advanced)
+### Prongshell
 - Type: Medium Armor
 - Armor Class: 14 + Dexterity modifier (maximum +2)
 - Properties: Insulated, Enhanced Vision

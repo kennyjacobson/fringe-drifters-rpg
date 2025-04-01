@@ -11,6 +11,9 @@
       "lint": "eslint .",
       "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
       "generate:db": "ts-node --project scripts/tsconfig.json scripts/generateEquipmentDb.ts",
+      "generate:test-parser": "ts-node --project scripts/tsconfig.json src/utils/test-parser.ts",
+      "generate:drifters-db": "ts-node --project scripts/tsconfig.json scripts/generateDriftersDb.ts",
+      "generate:test-character-sheet": "ts-node --project scripts/tsconfig.json src/utils/test-character-sheet.ts",
       "prebuild": "npm run generate:db",
       "test": "jest"
     },

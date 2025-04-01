@@ -256,8 +256,6 @@ Iconography represents faction affiliations and grants:
 - Special: Safe haven privileges at The Bench
 - Industrial Use: Trading and social networking
 
-// ... existing code ...
-
 ### Mol Bon Tunnel
 - Type: Secret Society
 - Ability Modifier: +1 CHA
@@ -419,3 +417,68 @@ Iconography represents faction affiliations and grants:
   - Navigation
 - Special: Advantage on guidance-related checks
 - Industrial Use: Navigation and spiritual guidance
+
+### Roving Terror
+- Type: Pirate Organization
+- Ability Modifier: +1 DEX
+- Skill Proficiencies:
+  - Piloting
+  - Athletics
+- Special: Advantage on EVA combat checks
+- Faction Relations:
+  - Dugall Freight: Hostile
+  - Free Fringe: Friendly
+- Industrial Use: Ship boarding and EVA combat operations
+
+### No Damage
+- Type: Certification Mark
+- Ability Modifier: +1 INT
+- Skill Proficiencies:
+  - Investigation
+  - Trading
+- Special: Advantage on equipment quality assessment checks
+- Industrial Use: Equipment inspection and trading operations
+
+### Union of Merchants
+- Type: Professional Guild
+- Ability Modifier: +1 CHA
+- Skill Proficiencies:
+  - Trading
+  - Deception
+- Special: Advantage on freight access negotiations
+- Faction Relations:
+  - Dugall Freight: Allied
+- Industrial Use: Trade and logistics operations
+
+### Freebooters' Flag
+- Type: Militant Organization
+- Ability Modifier: +1 STR
+- Skill Proficiencies:
+  - Intimidation
+  - Athletics
+- Special: Advantage on territory control checks
+- Faction Relations:
+  - Free Fringe: Friendly
+  - Established Settlements: Hostile
+- Industrial Use: Territory acquisition and control
+
+### Beshtala-Chanko
+- Type: State Affiliation
+- Ability Modifier: +1 CHA
+- Skill Proficiencies:
+  - Persuasion
+  - Deception
+- Special: Advantage on bureaucratic interaction checks
+- Faction Relations:
+  - League of Channel: Allied
+  - Free Fringe: Hostile
+- Industrial Use: State operations and diplomacy
+
+### Lethal
+- Type: Warning Symbol
+- Ability Modifier: +1 STR
+- Skill Proficiencies:
+  - Intimidation
+  - Toxicology
+- Special: Advantage on intimidation checks against civilians
+- Industrial Use: Hazardous materials handling and combat operations

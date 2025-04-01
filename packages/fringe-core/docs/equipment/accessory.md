@@ -77,7 +77,7 @@ Completed: 32
 - Properties: Heavy, Loading
 - Industrial Use: Rock drilling and core sampling
 
-### Fat Koltso
+### The (Fat) Koltso
 - Damage: 2d10 piercing
 - Properties: Heavy, Two-handed, Loading, Range (80/320), Special
 - Industrial Use: Hull penetration and structural demolition
@@ -88,10 +88,12 @@ Completed: 32
 - Industrial Use: Metal shearing and broemite processing
 
 ### Ball Claw
-- Damage: 1d6 bludgeoning + 2d6 crushing on grapple
-- Properties: Special (On hit, can attempt to grapple. While grappling, deals crushing damage), Reach
+- Damage: 1d6 bludgeoning
+- Properties: Special, Reach
 - Industrial Use: Resource harvesting and material extraction
 - Ability Modifier: +1 STR
+- Additional Damage: + 2d6 crushing on grapple
+- Special: On hit, can attempt to grapple. While grappling, deals crushing damage
 
 ### The Slipper
 - Damage: 1d8 slashing
@@ -115,35 +117,42 @@ Completed: 32
 
 ### The Nozzle
 - Damage: 2d4 acid
-- Properties: Special (Can use different damage types based on loaded substance), Range (20/60)
+- Properties: Special , Range (20/60)
 - Industrial Use: Chemical application and medical treatment
 - Ability Modifier: +1 INT (Chemical knowledge required)
+- Special: Can use different damage types based on loaded substance
 
 ### Steady Hammer
 - Damage: 1d10 bludgeoning
-- Properties: Heavy, Special (Negates vibration damage to user)
+- Properties: Heavy, Special
 - Industrial Use: Construction and stonework
 - Ability Modifier: +1 CON (Vibration resistance)
+- Special: Negates vibration damage to user
 
 ### Cream Steamer
-- Damage: 2d6 fire + 1d4 acid
-- Properties: Loading, Special (Creates lingering fire damage in target area)
+- Damage: 2d6 fire
+- Properties: Loading, Special
 - Industrial Use: Chemical dispersal and industrial cleaning
+- Additional Damage: + 1d4 acid
+- Special: Creates lingering fire damage in target area
 
 ### Flocker
 - Damage: 1d4 bludgeoning
-- Properties: Special (Can entangle targets), Range (30/60)
+- Properties: Special, Range (30/60)
 - Industrial Use: Pest control and specimen collection
+- Special: Can entangle targets
 
 ### Candlestick
 - Damage: 1d8 (varies by ammunition)
-- Properties: Loading, Special (Can use different ammunition types)
+- Properties: Loading, Special
 - Industrial Use: Emergency signaling and illumination
+- Special: Can use different ammunition types
 
 ### Soaker
 - Damage: 2d4 acid
-- Properties: Special (Causes ongoing acid damage), Range (15/30)
+- Properties: Special, Range (15/30)
 - Industrial Use: Chemical application and surface treatment
+- Special: Causes ongoing acid damage
 
 ### Soapy
 - Damage: 1d10 piercing
@@ -152,13 +161,15 @@ Completed: 32
 
 ### Bolt Harp
 - Damage: 1d8 piercing
-- Properties: Loading, Range (60/120), Special (6-shot cylinder with rapid fire capability)
+- Properties: Loading, Range (60/120), Special
 - Industrial Use: Hunting and game collection
+- Special: 6-shot cylinder with rapid fire capability
 
 ### Cove Carver
 - Damage: 2d6 piercing
-- Properties: Loading, Range (40/120), Special (Can recharge spent ammunition for low-power shots)
+- Properties: Loading, Range (40/120), Special
 - Industrial Use: Security and defense operations
+- Special: Can recharge spent ammunition for low-power shots
 
 ### Faulk's Icepick
 - Damage: 2d10 piercing
@@ -168,51 +179,60 @@ Completed: 32
 
 ### Roulette
 - Damage: 1d8 (varies by ammunition)
-- Properties: Loading, Special (Can sequence different ammunition types)
+- Properties: Loading, Special
 - Industrial Use: Multi-purpose signaling and emergency response
+- Special: Can sequence different ammunition types
 
 ### Hull Hooker
 - Damage: 1d6 piercing
-- Properties: Special (Can grapple to surfaces), Reach
+- Properties: Special, Reach
 - Industrial Use: Ship maintenance and hull repair
+- Special: Can grapple to surfaces
 
 ### Prongseat
 - Damage: 2d8 force
-- Properties: Heavy, Special (Vehicle mount, can be used for aerial maneuvers)
+- Properties: Heavy, Special
 - Industrial Use: Reconnaissance and emergency response operations
 - Ability Modifier: +1 DEX (Aerial maneuvering)
+- Special: Vehicle mount, can be used for aerial maneuvers
 
 ### Heavy Spigot
 - Damage: 2d8 slashing
-- Properties: Heavy, Two-handed, Special (Execution-style attacks)
+- Properties: Heavy, Two-handed, Special
 - Industrial Use: Heavy material processing and demolition
+- Special: Execution-style attacks
 
-### Straight Smile
+### The Straight Smile
 - Damage: 1d10 slashing
-- Properties: Finesse, Special (Serrated blade causes additional bleeding damage)
+- Properties: Finesse, Special
 - Industrial Use: Material cutting and precision shearing
 - Ability Modifier: +1 DEX (Finesse weapon mastery)
+- Special: Serrated blade causes additional bleeding damage
 
 ## Mech Suits
 Mech suits provide both offensive capabilities and defensive protection. These suits replace both the standard armor and accessory slots for a character.
 
 ### Hand Cannon Mech
 - Damage: 4d10 force
-- Properties: Heavy, Loading, Range (80/240), Special (Can disintegrate targets on critical hits)
+- Properties: Heavy, Loading, Range (80/240), Special
 - Armor Class: 16
 - Industrial Use: Rock demolition and long-range mining operations
 - Ability Modifiers: +2 STR, +1 CON
+- Special: Can drill through solid materials
 
 ### Vice Grip Mech
-- Damage: 2d12 bludgeoning + 2d8 crushing
-- Properties: Heavy, Special (Can grapple targets, dealing automatic crushing damage while grappled)
+- Damage: 2d12 bludgeoning
+- Properties: Heavy, Special
 - Armor Class: 17
 - Industrial Use: Ore crushing and heavy material manipulation
 - Ability Modifiers: +3 STR, +1 CON
+- Special: Can grapple targets, dealing automatic crushing damage while grappled
+- Additional Damage: + 2d8 crushing
 
 ### Bore Master Mech
 - Damage: 3d6 piercing
-- Properties: Heavy, Special (Can drill through solid materials)
+   - Properties: Heavy, Special
 - Armor Class: 15
 - Industrial Use: Mining operations and tunnel boring
 - Ability Modifiers: +2 STR, +1 INT
+- Special: Can drill through solid materials

@@ -1,5 +1,5 @@
-import { AbilityScore } from '../types';
-import { generatedEquipmentDatabase } from './generated/equipment';
+// import { AbilityScore } from '../types';
+import { equipmentDatabase as generatedEquipmentDatabase } from './generated/equipment';
 
 export const equipmentDatabase = {
   ...generatedEquipmentDatabase,

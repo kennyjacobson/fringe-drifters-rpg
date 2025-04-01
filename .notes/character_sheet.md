@@ -1,15 +1,7 @@
-Here's a basic character sheet format using only OGL-compliant terminology in markdown. This is a simplified version that covers the core mechanics:
-
-# Character Sheet
----
+# Fringe Drifter Character Sheet
 
 ## Basic Information
-**Character Name**: ________________  
-**Class**: ________________  Level: ___  
-**Background**: ________________  
-**Player Name**: ________________  
-**Species**: ________________  
-**Alignment**: ________________  
+**NFT ID**: ________________  
 
 ## Ability Scores
 | Ability | Score | Modifier |
@@ -23,91 +15,105 @@ Here's a basic character sheet format using only OGL-compliant terminology in ma
 
 ## Combat Statistics
 **Armor Class**: ___  
-**Initiative**: ___  
-**Speed**: ___ ft  
-**Hit Points**: Maximum: ___ Current: ___  
-**Hit Dice**: ___  
 
-## Saving Throws
-- Strength: □ (___)
-- Dexterity: □ (___)
-- Constitution: □ (___)
-- Intelligence: □ (___)
-- Wisdom: □ (___)
-- Charisma: □ (___)
+## Environmental Resistances
+| Hazard | Protection |
+|--------|------------|
+| Cold | ___ |
+| Heat | ___ |
+| Toxin | ___ |
+| Radiation | ___ |
+| Seismic | ___ |
+| Vacuum | ___ |
+| Pressure | ___ |
+| Sound | ___ |
+| Water | ___ |
+| Particulate | ___ |
 
 ## Skills
 | Skill | Ability | Proficient? | Modifier |
 |-------|---------|-------------|----------|
 | Acrobatics | DEX | □ | ___ |
-| Animal Handling | WIS | □ | ___ |
-| Arcana | INT | □ | ___ |
 | Athletics | STR | □ | ___ |
 | Deception | CHA | □ | ___ |
-| History | INT | □ | ___ |
-| Insight | WIS | □ | ___ |
+| Engineering | INT | □ | ___ |
+| Geology | INT | □ | ___ |
 | Intimidation | CHA | □ | ___ |
 | Investigation | INT | □ | ___ |
 | Medicine | WIS | □ | ___ |
-| Nature | INT | □ | ___ |
+| Navigation | INT | □ | ___ |
 | Perception | WIS | □ | ___ |
 | Performance | CHA | □ | ___ |
 | Persuasion | CHA | □ | ___ |
-| Religion | INT | □ | ___ |
-| Sleight of Hand | DEX | □ | ___ |
+| Piloting | DEX | □ | ___ |
+| Scavenging | WIS | □ | ___ |
 | Stealth | DEX | □ | ___ |
 | Survival | WIS | □ | ___ |
+| Toxicology | INT | □ | ___ |
+| Trading | CHA | □ | ___ |
 
 ## Equipment
-### Weapons
-| Name | Attack Bonus | Damage | Type |
-|------|--------------|--------|------|
-| | | | |
-| | | | |
-| | | | |
 
-### Armor and Shields
+### Suit
+**Type**: ________________  
+**AC Bonus**: ___  
+**DEX Bonus**: ___  
+**Properties**:  
 - ________________
 - ________________
+**Environmental Protection**:  
+- ________________
+**Industrial Use**: ________________  
+**Special**: ________________
 
-### Other Equipment
+### Headgear
+**Type**: ________________  
+**AC Bonus**: ___  
+**Properties**:  
 - ________________
 - ________________
+**Vision**: ________________  
+**Environmental Protection**:  
 - ________________
+**Industrial Use**: ________________  
+**Special**: ________________  
+**Warning**: ________________
 
-## Features and Traits
+### Accessory/Weapon
+**Damage**: ___  
+**Damage Type**: ________________  
+**Properties**:  
 - ________________
 - ________________
-- ________________
+**Range**: ________________  
+**Industrial Use**: ________________  
+**Special**: ________________
 
-## Spellcasting
-**Spellcasting Ability**: ________________  
-**Spell Save DC**: ___  
-**Spell Attack Bonus**: ___  
+### Backpack
+**Type**: ________________  
+**Carrying Capacity**: ___  
+**Properties**:  
+- ________________
+- ________________
+**Environmental Protection**:  
+- ________________
+**Industrial Use**: ________________  
+**Special**: ________________  
+**Warning**: ________________
 
-### Spell Slots
-- 1st Level: □ □ □ □
-- 2nd Level: □ □ □
-- 3rd Level: □ □ □
-- 4th Level: □ □
-- 5th Level: □ □
-- 6th Level: □
-- 7th Level: □
-- 8th Level: □
-- 9th Level: □
+### Graphic (Faction)
+**Type**: ________________  
+**Skill Proficiencies**:  
+- ________________
+- ________________
+**Faction Relations**:  
+- ________________
+**Industrial Use**: ________________  
+**Special**: ________________
 
-### Spells Known/Prepared
-**Cantrips**:
-- ________________
-- ________________
-
-**1st Level**:
-- ________________
-- ________________
-
-**2nd Level**:
-- ________________
-- ________________
+## Carrying Capacity
+**Base**: ___  
+**Total**: ___  
 
 ## Notes
 _______________________________________________
@@ -115,6 +121,6 @@ _______________________________________________
 _______________________________________________
 
 ---
-*This character sheet format uses game mechanics available under the Open Game License v1.0a.*
+*This character sheet is generated from NFT metadata and represents a Fringe Drifter character.*
 
 Note: This is a basic template that can be filled in. The actual mechanics for calculating values (like ability modifiers, saving throws, etc.) are also covered under the OGL but not included here. You can freely use and modify this template as it only contains mechanical elements covered by the OGL.

@@ -53,3 +53,34 @@ fringe-rpg/
 - Making the system open source and modular for community adoption
 
 The ultimate goal is to create a foundation that enables multiple game implementations using the Fringe NFTs as playable characters, adding utility and value to the NFT collection.
+
+## Character Sheet Design Intent
+
+The character sheet presents all NFT-derived attributes in a clear format:
+- Basic Information (name, level, etc.)
+- Ability Scores with modifiers
+- Combat Statistics (AC, HP, etc.)
+- Equipment with derived bonuses
+- Carrying capacity and encumbrance
+- Environmental resistances
+- Faction relationships
+- Skills and proficiencies
+- Special equipment properties
+
+## Specimens as Separate Elements
+
+While specimens (ERC-1155 NFTs) are not intrinsic character traits, they can be:
+- Collected and carried in appropriate backpacks
+- Analyzed using mouth machines
+- Traded with factions for reputation or resources
+- Used for temporary bonuses during gameplay
+
+## Implementation Goals
+
+1. Create a deterministic, transparent system for NFT trait conversion
+2. Balance gameplay mechanics with NFT collectible value
+3. Allow for character advancement without changing the NFT
+4. Provide sufficient mechanical depth for engaging gameplay
+5. Create a foundation for multiple game implementations using the same character data
+
+This framework allows for programmatic generation of character sheets directly from NFT metadata, while maintaining game balance and providing meaningful mechanical differentiation between characters.
