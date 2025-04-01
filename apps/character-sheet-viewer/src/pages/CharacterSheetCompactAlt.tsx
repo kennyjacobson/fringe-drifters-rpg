@@ -273,8 +273,9 @@ export function CharacterSheetCompactAlt() {
         <div>[ESC] TO EXIT</div>
       </div>
       
-      {/* Add blinking cursor animation */}
-      <style jsx>{`
+      {/* Regular style tag without jsx prop */}
+      <style>
+        {`
         @keyframes blink {
           0%, 100% { opacity: 0; }
           50% { opacity: 1; }
@@ -282,7 +283,8 @@ export function CharacterSheetCompactAlt() {
         .blink {
           animation: blink 1s infinite;
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 }
