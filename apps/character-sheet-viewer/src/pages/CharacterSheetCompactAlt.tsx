@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getDrifter } from '@fringe-rpg/core';
+import { HomeButton } from "../components/HomeButton.js";
 
 // Add type definition for our character data
 interface CharacterData {
@@ -85,15 +86,20 @@ export function CharacterSheetCompactAlt() {
   };
 
   if (error) {
-    return <div className="bg-black text-green-500 p-4 font-mono">Error: {error.message}</div>;
+    return <div className="p-4 text-red-500">Error: {error.message}</div>;
   }
 
   if (!data) {
-    return <div className="bg-black text-green-500 p-4 font-mono">Loading...</div>;
+    return <div className="p-4 text-gray-400">Loading Drifter Data...</div>;
   }
 
   return (
-    <div className="bg-black text-green-500 font-mono p-4 min-h-screen flex flex-col">
+    <div className="bg-black text-green-400 font-mono p-4 min-h-screen">
+      <div className="flex justify-between items-center mb-4 border-b border-green-700 pb-2">
+        <h1 className="text-xl">DRIFTER FILE :: ID #{drifterId}</h1>
+        <HomeButton />
+      </div>
+
       {/* Terminal header */}
       <div className="border-b border-green-500 pb-2 mb-4">
         <div className="flex justify-between items-center">

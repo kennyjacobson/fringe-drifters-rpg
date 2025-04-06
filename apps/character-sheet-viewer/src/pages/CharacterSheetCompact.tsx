@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getDrifter } from '@fringe-rpg/core';
 import { Badge } from "../components/ui/badge.js"; // Import Badge
+import { HomeButton } from "../components/HomeButton.js";
 
 // Re-use type definitions (or import if moved to a shared location)
 interface CharacterData {
@@ -92,7 +93,10 @@ export function CharacterSheetCompact() {
   return (
     <div className="bg-black text-green-400 font-mono p-4 min-h-screen">
       {/* We will fill this with a grid layout */}
-      <h1 className="text-xl mb-4 border-b border-green-700 pb-2">DRIFTER TERMINAL :: ID #{drifterId}</h1>
+      <div className="flex justify-between items-center mb-4 border-b border-green-700 pb-2">
+        <h1 className="text-xl">DRIFTER TERMINAL :: ID #{drifterId}</h1>
+        <HomeButton />
+      </div>
 
       <div className="grid grid-cols-3 grid-rows-[auto_1fr] gap-4">
 

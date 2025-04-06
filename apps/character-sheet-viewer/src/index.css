@@ -66,4 +66,86 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes attack-right {
+  0% { 
+    transform: translateX(-30px); 
+    opacity: 0.5; 
+  }
+  50% { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(30px); 
+    opacity: 0.5; 
+  }
+}
+
+@keyframes attack-left {
+  0% { 
+    transform: translateX(30px); 
+    opacity: 0.5; 
+  }
+  50% { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(-30px); 
+    opacity: 0.5; 
+  }
+}
+
+.animate-attack-right {
+  animation: attack-right 0.5s ease-in-out forwards;
+  position: absolute;
+  display: inline-block;
+}
+
+.animate-attack-left {
+  animation: attack-left 0.5s ease-in-out forwards;
+  position: absolute;
+  display: inline-block;
+}
+
+.animated-text {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Terminal text animation */
+.terminal-text p {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  animation: typing 4s steps(60, end);
+}
+
+.terminal-text p:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.terminal-text p:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Pulse animation for the system ready indicator */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
 } 

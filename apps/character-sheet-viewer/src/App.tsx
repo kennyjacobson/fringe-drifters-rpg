@@ -3,7 +3,10 @@ import { CharacterSheet } from './pages/CharacterSheet.js';
 import { CharacterSheetAPI } from './pages/CharacterSheetAPI.js';
 import { CharacterSheetCompact } from './pages/CharacterSheetCompact.js';
 import { CharacterSheetCompactAlt } from './pages/CharacterSheetCompactAlt.js';
+import { BattleGame } from './pages/BattleGame.js';
+import { BattleSelector } from './pages/BattleSelector.js';
 import { Home } from './pages/Home.js';
+
 function App() {
   return (
     <Router>
@@ -14,6 +17,8 @@ function App() {
           <Route path="/character-sheet-api/:drifterId" element={<CharacterSheetAPI />} />
           <Route path="/character-sheet-compact/:drifterId" element={<CharacterSheetCompact />} />
           <Route path="/character-sheet-compact-alt/:drifterId" element={<CharacterSheetCompactAlt />} />
+          <Route path="/battle-selector" element={<BattleSelector />} />
+          <Route path="/battle-game" element={<BattleGame />} />
         </Routes>
       </div>
     </Router>
