@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getDrifter } from '@fringe-rpg/core';
-import { Badge } from "../components/ui/badge.tsx";
-import { HomeButton } from "../components/HomeButton.tsx";
+// import { Badge } from "../components/ui/badge.js";
+import { HomeButton } from "../components/HomeButton.js";
 
 // Type definitions from CharacterSheetCompact
 interface CharacterData {
