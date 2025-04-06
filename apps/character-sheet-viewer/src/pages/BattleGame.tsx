@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getDrifter } from '@fringe-rpg/core';
-import { Badge } from "../components/ui/badge";
-import { HomeButton } from "../components/HomeButton.js";
+import { Badge } from "../components/ui/badge.tsx";
+import { HomeButton } from "../components/HomeButton.tsx";
 
 // Type definitions from CharacterSheetCompact
 interface CharacterData {
@@ -86,15 +86,18 @@ export function BattleGame() {
     const fetchDrifters = async () => {
       try {
         setLoading(true);
-        const d1 = getDrifter(parseInt(drifter1Id));
-        const d2 = getDrifter(parseInt(drifter2Id));
+        const d1 = getDrifter(parseInt(drifter1Id) || 1);
+        const d2 = getDrifter(parseInt(drifter2Id) || 2);
         
         setDrifter1(d1 as CharacterData);
         setDrifter2(d2 as CharacterData);
         
         // Set initial HP based on CON scores - this is simplified
-        setHp1(10 + (d1.abilityScores.CON ? Math.floor((d1.abilityScores.CON - 10) / 2) : 0));
-        setHp2(10 + (d2.abilityScores.CON ? Math.floor((d2.abilityScores.CON - 10) / 2) : 0));
+        const con1 = d1.abilityScores['CON'] ?? 10;
+        const con2 = d2.abilityScores['CON'] ?? 10;
+        
+        setHp1(10 + Math.floor((con1 - 10) / 2));
+        setHp2(10 + Math.floor((con2 - 10) / 2));
         
         // Add initial combat log entry
         setCombatLog([{
@@ -114,17 +117,18 @@ export function BattleGame() {
   }, [drifter1Id, drifter2Id]);
   
   // Function to roll dice (e.g. "2d6" => roll 2 six-sided dice)
-  const rollDice = (diceNotation: string): number => {
+  const rollDice = (diceNotation: string = "1d4"): number => {
     if (!diceNotation) return 0;
     
     const match = diceNotation.match(/(\d+)d(\d+)/);
     if (!match) return 0;
     
-    const [_, numDice, dieSize] = match;
+    const numDice = parseInt(match[1] ?? "1");
+    const dieSize = parseInt(match[2] ?? "4");
     let total = 0;
     
-    for (let i = 0; i < parseInt(numDice); i++) {
-      total += Math.floor(Math.random() * parseInt(dieSize)) + 1;
+    for (let i = 0; i < numDice; i++) {
+      total += Math.floor(Math.random() * dieSize) + 1;
     }
     
     return total;
@@ -140,8 +144,8 @@ export function BattleGame() {
     const defenderName = `DRIFTER #${activePlayer === 1 ? drifter2Id : drifter1Id}`;
     
     // Calculate attack bonus (STR mod for melee or DEX mod for ranged)
-    const strMod = Math.floor((attacker.abilityScores.STR - 10) / 2);
-    const dexMod = Math.floor((attacker.abilityScores.DEX - 10) / 2);
+    const strMod = Math.floor(((attacker.abilityScores['STR'] ?? 10) - 10) / 2);
+    const dexMod = Math.floor(((attacker.abilityScores['DEX'] ?? 10) - 10) / 2);
     
     // Determine if weapon is ranged
     const isRanged = attacker.equipment.accessory?.range ? true : false;
@@ -167,15 +171,12 @@ export function BattleGame() {
         let damageRoll = 0;
         
         // Use weapon damage or default to 1d4
-        if (attacker.equipment.accessory?.damage) {
-          damageRoll = rollDice(attacker.equipment.accessory.damage);
-        } else {
-          damageRoll = Math.floor(Math.random() * 4) + 1; // 1d4 as default
-        }
+        const damageDice = attacker.equipment.accessory?.damage ?? "1d4";
+        damageRoll = rollDice(damageDice);
         
         // Add strength modifier to damage for melee weapons
-        if (!isRanged) {
-          damageRoll += strMod > 0 ? strMod : 0;
+        if (!isRanged && strMod > 0) {
+          damageRoll += strMod;
         }
         
         // Ensure minimum 1 damage
@@ -240,6 +241,10 @@ export function BattleGame() {
     return <div className="p-4 text-gray-400">LOADING COMBAT SYSTEMS...</div>;
   }
   
+  // Calculate max HP for health bar display
+  const maxHp1 = drifter1 ? (10 + Math.floor(((drifter1.abilityScores['CON'] ?? 10) - 10) / 2)) : 10;
+  const maxHp2 = drifter2 ? (10 + Math.floor(((drifter2.abilityScores['CON'] ?? 10) - 10) / 2)) : 10;
+  
   return (
     <div className="bg-black text-green-400 font-mono p-4 min-h-screen">
       <div className="flex justify-between items-center mb-4 border-b border-green-700 pb-2">
@@ -261,7 +266,7 @@ export function BattleGame() {
             <div className="w-full bg-green-900/30 h-3 border border-green-700">
               <div 
                 className="bg-green-600 h-full transition-all duration-300"
-                style={{ width: `${(hp1 / (10 + (drifter1?.abilityScores.CON ? Math.floor((drifter1.abilityScores.CON - 10) / 2) : 0))) * 100}%` }}
+                style={{ width: `${(hp1 / maxHp1) * 100}%` }}
               ></div>
             </div>
           </div>
@@ -270,18 +275,18 @@ export function BattleGame() {
           <div className="grid grid-cols-2 gap-2 mb-4">
             <div className="border border-green-900 p-1 text-center">
               <div className="text-xs">STR</div>
-              <div className="text-lg">{drifter1?.abilityScores.STR}</div>
+              <div className="text-lg">{drifter1?.abilityScores['STR'] ?? 10}</div>
               <div className="text-xs">
-                ({Math.floor((drifter1?.abilityScores.STR - 10) / 2) >= 0 ? '+' : ''}
-                {Math.floor((drifter1?.abilityScores.STR - 10) / 2)})
+                ({Math.floor(((drifter1?.abilityScores['STR'] ?? 10) - 10) / 2) >= 0 ? '+' : ''}
+                {Math.floor(((drifter1?.abilityScores['STR'] ?? 10) - 10) / 2)})
               </div>
             </div>
             <div className="border border-green-900 p-1 text-center">
               <div className="text-xs">DEX</div>
-              <div className="text-lg">{drifter1?.abilityScores.DEX}</div>
+              <div className="text-lg">{drifter1?.abilityScores['DEX'] ?? 10}</div>
               <div className="text-xs">
-                ({Math.floor((drifter1?.abilityScores.DEX - 10) / 2) >= 0 ? '+' : ''}
-                {Math.floor((drifter1?.abilityScores.DEX - 10) / 2)})
+                ({Math.floor(((drifter1?.abilityScores['DEX'] ?? 10) - 10) / 2) >= 0 ? '+' : ''}
+                {Math.floor(((drifter1?.abilityScores['DEX'] ?? 10) - 10) / 2)})
               </div>
             </div>
           </div>
@@ -293,7 +298,7 @@ export function BattleGame() {
             </div>
             {drifter1?.equipment.accessory?.damage && (
               <p className="text-xs opacity-80">
-                Damage: {drifter1.equipment.accessory.damage} {drifter1.equipment.accessory.damageType}
+                Damage: {drifter1.equipment.accessory.damage} {drifter1.equipment.accessory.damageType || ''}
               </p>
             )}
           </div>
@@ -324,7 +329,7 @@ export function BattleGame() {
                     #{drifter1Id}
                   </div>
                   
-                  {/* Fixed attack animation */}
+                  {/* Attack animation */}
                   <div className="relative flex-1 h-16 flex items-center justify-center">
                     {showAttackAnimation && (
                       <div 
@@ -398,7 +403,7 @@ export function BattleGame() {
             <div className="w-full bg-green-900/30 h-3 border border-green-700">
               <div 
                 className="bg-green-600 h-full transition-all duration-300"
-                style={{ width: `${(hp2 / (10 + (drifter2?.abilityScores.CON ? Math.floor((drifter2.abilityScores.CON - 10) / 2) : 0))) * 100}%` }}
+                style={{ width: `${(hp2 / maxHp2) * 100}%` }}
               ></div>
             </div>
           </div>
@@ -407,18 +412,18 @@ export function BattleGame() {
           <div className="grid grid-cols-2 gap-2 mb-4">
             <div className="border border-green-900 p-1 text-center">
               <div className="text-xs">STR</div>
-              <div className="text-lg">{drifter2?.abilityScores.STR}</div>
+              <div className="text-lg">{drifter2?.abilityScores['STR'] ?? 10}</div>
               <div className="text-xs">
-                ({Math.floor((drifter2?.abilityScores.STR - 10) / 2) >= 0 ? '+' : ''}
-                {Math.floor((drifter2?.abilityScores.STR - 10) / 2)})
+                ({Math.floor(((drifter2?.abilityScores['STR'] ?? 10) - 10) / 2) >= 0 ? '+' : ''}
+                {Math.floor(((drifter2?.abilityScores['STR'] ?? 10) - 10) / 2)})
               </div>
             </div>
             <div className="border border-green-900 p-1 text-center">
               <div className="text-xs">DEX</div>
-              <div className="text-lg">{drifter2?.abilityScores.DEX}</div>
+              <div className="text-lg">{drifter2?.abilityScores['DEX'] ?? 10}</div>
               <div className="text-xs">
-                ({Math.floor((drifter2?.abilityScores.DEX - 10) / 2) >= 0 ? '+' : ''}
-                {Math.floor((drifter2?.abilityScores.DEX - 10) / 2)})
+                ({Math.floor(((drifter2?.abilityScores['DEX'] ?? 10) - 10) / 2) >= 0 ? '+' : ''}
+                {Math.floor(((drifter2?.abilityScores['DEX'] ?? 10) - 10) / 2)})
               </div>
             </div>
           </div>
@@ -430,7 +435,7 @@ export function BattleGame() {
             </div>
             {drifter2?.equipment.accessory?.damage && (
               <p className="text-xs opacity-80">
-                Damage: {drifter2.equipment.accessory.damage} {drifter2.equipment.accessory.damageType}
+                Damage: {drifter2.equipment.accessory.damage} {drifter2.equipment.accessory.damageType || ''}
               </p>
             )}
           </div>
