@@ -112,7 +112,7 @@ export function Home() {
               <span className="text-green-600">COMBAT SYSTEMS:</span> READY
             </div>
             <div>
-              <span className="text-green-600">DRIFTERS INDEXED:</span> 8,000+
+              <span className="text-green-600">DRIFTERS INDEXED:</span> 3,407
             </div>
             <div>
               <span className="text-green-600">DATA INTEGRITY:</span> 99.97%
