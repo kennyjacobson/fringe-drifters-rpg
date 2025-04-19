@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story } from 'inkjs';
+import { useParams } from 'react-router-dom';
 import mainStory from '../stories/main.ink.json' with { type: 'json' };
 import theBenchStory from '../stories/locations/the_bench.ink.json' with { type: 'json' };
 import { HomeButton } from '../components/HomeButton.js';
@@ -15,7 +16,13 @@ interface StoryContent {
 
 type StoryModule = 'main' | 'the_bench';
 
+interface StoryState {
+  currentModule: StoryModule;
+  variables: Record<string, any>;
+}
+
 export function StoryGame() {
+  const { drifterId } = useParams();
   const [story, setStory] = useState<Story | null>(null);
   const [currentStoryModule, setCurrentStoryModule] = useState<StoryModule>('main');
   const [currentContent, setCurrentContent] = useState<StoryContent>({
@@ -24,44 +31,58 @@ export function StoryGame() {
     tags: []
   });
 
+  // Load story state from local storage
+  const loadStoryState = (): StoryState | null => {
+    const saved = localStorage.getItem(`story-state-${drifterId}`);
+    return saved ? JSON.parse(saved) : null;
+  };
+
+  // Save story state to local storage
+  const saveStoryState = (module: StoryModule, variables: Record<string, any>) => {
+    const state: StoryState = {
+      currentModule: module,
+      variables: variables
+    };
+    localStorage.setItem(`story-state-${drifterId}`, JSON.stringify(state));
+  };
+
   // Load a specific story module
   const loadStoryModule = (module: StoryModule) => {
     const storyContent = module === 'main' ? mainStory : theBenchStory;
     console.log('Loading module:', module);
-    console.log('Story content:', storyContent);
     const story = new Story(storyContent);
-    console.log('Story created:', story);
+
+    // Load saved state if it exists
+    const savedState = loadStoryState();
+    if (savedState && savedState.currentModule === module) {
+      Object.entries(savedState.variables).forEach(([key, value]) => {
+        story.variablesState[key] = value;
+      });
+    }
     
     // Try multiple continues
-    console.log('First continue...');
     let text = story.Continue();
-    console.log('Text after first continue:', text);
-    console.log('Can continue?', story.canContinue);
-    
     if (story.canContinue) {
-        console.log('Second continue...');
-        text = story.Continue();
-        console.log('Text after second continue:', text);
+      text = story.Continue();
     }
 
     setStory(story);
     setCurrentStoryModule(module);
     
     setCurrentContent({
-        text,
-        choices: story.currentChoices,
-        tags: story.currentTags
+      text,
+      choices: story.currentChoices,
+      tags: story.currentTags
     });
 
-    console.log('Loading module:', module);
-    console.log('Story content:', storyContent);
+    // Save current state
+    saveStoryState(module, story.variablesState);
   };
 
   useEffect(() => {
     // Initialize with main story
     loadStoryModule('main');
-    console.log('Initializing story');
-  }, []);
+  }, [drifterId]); // Reload when drifterId changes
 
   const handleChoice = (index: number) => {
     if (!story) return;
@@ -77,7 +98,6 @@ export function StoryGame() {
       loadStoryModule('the_bench');
       return;
     }
-    // Add this check for transitioning back to main
     if (tags.includes('transition_to_main')) {
       loadStoryModule('main');
       return;
@@ -89,10 +109,8 @@ export function StoryGame() {
       tags: story.currentTags
     });
 
-    console.log('Choice made:', index);
-    console.log('Next text:', text);
-    console.log('Current tags:', tags);
-    console.log('Current choices:', story.currentChoices);
+    // Save state after each choice
+    saveStoryState(currentStoryModule, story.variablesState);
   };
 
   if (!story) return <div>Loading...</div>;
@@ -100,7 +118,10 @@ export function StoryGame() {
   return (
     <div className="bg-black text-green-400 font-mono p-4 min-h-screen">
       <div className="flex justify-between items-center mb-4 border-b border-green-700 pb-2">
-        <h1 className="text-xl">FRINGE DRIFTER :: STORY MODE</h1>
+        <div>
+          <h1 className="text-xl">FRINGE DRIFTER :: STORY MODE</h1>
+          <div className="text-sm text-green-600">Drifter ID: {drifterId}</div>
+        </div>
         <div className="flex gap-4">
           <button 
             onClick={() => loadStoryModule('main')}

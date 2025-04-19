@@ -33,7 +33,11 @@ export function Home() {
 
   // Navigate to story game
   const startStory = () => {
-    navigate('/story-game');
+    if (!drifterId || isNaN(parseInt(drifterId))) {
+      setError('Please enter a valid Drifter ID');
+      return;
+    }
+    navigate(`/story-game/${drifterId}`);
   };
 
   return (
@@ -109,10 +113,22 @@ export function Home() {
           <div className="border border-green-700 p-4 md:col-span-2">
             <h2 className="text-xl mb-4 border-b border-green-900 pb-2">STORY MODE</h2>
             
-            <div className="border border-green-900 mb-4 p-4 flex items-center justify-center bg-green-900/10">
-              <div className="text-center">
+            <div className="border border-green-900 mb-4 p-4 bg-green-900/10">
+              <div className="text-center mb-4">
                 <div className="text-4xl mb-2">📖</div>
                 <div>STORY MODE READY</div>
+              </div>
+
+              <div className="max-w-md mx-auto">
+                <label htmlFor="storyDrifterId" className="block mb-2">ENTER DRIFTER ID TO BEGIN:</label>
+                <input
+                  id="storyDrifterId"
+                  type="text"
+                  value={drifterId}
+                  onChange={(e) => setDrifterId(e.target.value)}
+                  className="w-full bg-black border border-green-700 px-3 py-2 focus:border-green-500 focus:outline-none text-green-400 mb-4"
+                  placeholder="Enter Drifter ID..."
+                />
               </div>
             </div>
 

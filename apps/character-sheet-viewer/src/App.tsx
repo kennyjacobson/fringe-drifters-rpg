@@ -20,7 +20,7 @@ function App() {
           <Route path="/character-sheet-compact-alt/:drifterId" element={<CharacterSheetCompactAlt />} />
           <Route path="/battle-selector" element={<BattleSelector />} />
           <Route path="/battle-game" element={<BattleGame />} />
-          <Route path="/story-game" element={<StoryGame />} />
+          <Route path="/story-game/:drifterId" element={<StoryGame />} />
         </Routes>
       </div>
     </Router>
