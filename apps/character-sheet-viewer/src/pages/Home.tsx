@@ -31,6 +31,11 @@ export function Home() {
     navigate(`/character-sheet-compact-alt/${drifterId}`);
   };
 
+  // Navigate to story game
+  const startStory = () => {
+    navigate('/story-game');
+  };
+
   return (
     <div className="bg-black text-green-400 font-mono p-4 min-h-screen">
       <div className="max-w-3xl mx-auto">
@@ -99,6 +104,25 @@ export function Home() {
               INITIATE BATTLE SEQUENCE
             </button>
           </div>
+
+          {/* Story Game Section */}
+          <div className="border border-green-700 p-4 md:col-span-2">
+            <h2 className="text-xl mb-4 border-b border-green-900 pb-2">STORY MODE</h2>
+            
+            <div className="border border-green-900 mb-4 p-4 flex items-center justify-center bg-green-900/10">
+              <div className="text-center">
+                <div className="text-4xl mb-2">📖</div>
+                <div>STORY MODE READY</div>
+              </div>
+            </div>
+
+            <button
+              onClick={startStory}
+              className="border border-green-700 bg-green-900/20 hover:bg-green-900/40 px-4 py-3 w-full"
+            >
+              ENTER STORY MODE
+            </button>
+          </div>
         </div>
 
         {/* System Information */}
@@ -110,6 +134,9 @@ export function Home() {
             </div>
             <div>
               <span className="text-green-600">COMBAT SYSTEMS:</span> READY
+            </div>
+            <div>
+              <span className="text-green-600">STORY MODE:</span> ACTIVE
             </div>
             <div>
               <span className="text-green-600">DRIFTERS INDEXED:</span> 3,407
