@@ -75,55 +75,60 @@ export function StoryGame() {
   };
 
   // Load a specific story module
-  const loadStoryModule = (module: StoryModule) => {
+  const loadStoryModule = (module: StoryModule, char: CharacterData) => {
+    console.log('loadStoryModule called with', module);
     const storyContent = module === 'main' ? mainStory : theBenchStory;
-    console.log('Loading module:', module);
     const story = new Story(storyContent);
+    console.log('Story created');
 
     // Bind external functions FIRST
     story.BindExternalFunction("checkSkill", (skillName: SkillName): number => {
-      if (!characterData?.skills[skillName]) return 0;
-      return characterData.skills[skillName].modifier;
+      if (!char?.skills[skillName]) return 0;
+      return char.skills[skillName].modifier;
     });
 
     story.BindExternalFunction("hasEquipment", (slot: EquipmentSlot, itemName: string): boolean => {
+      console.log('hasEquipment', slot, itemName);
       if (itemName === "any") {
-        return characterData?.equipment[slot] !== null;
+        return char?.equipment[slot] !== null;
       }
-      return characterData?.equipment[slot]?.name === itemName;
+      return char?.equipment[slot] !== null;
     });
 
     story.BindExternalFunction("getAbilityScore", (ability: AbilityScore): number => {
-      if (!characterData?.abilityScores[ability]) return 0;
-      return characterData.abilityScores[ability];
+      if (!char?.abilityScores[ability]) return 0;
+      return char.abilityScores[ability];
     });
 
-    // Make character data available to ink
-    if (characterData) {
-      story.variablesState['character_ability_scores'] = characterData.abilityScores;
-      story.variablesState['character_skills'] = characterData.skills;
-      story.variablesState['character_equipment'] = characterData.equipment;
-      story.variablesState['character_ac'] = characterData.baseAC;
-      story.variablesState['character_resistances'] = characterData.resistances;
-    }
+    story.BindExternalFunction("getEquipmentName", (slot: EquipmentSlot): string => {
+      console.log('getEquipmentName', slot);
+      console.log('char?.equipment[slot]', char?.equipment[slot]);
+      if (!char?.equipment[slot]) return "None";
+      return char.equipment[slot]?.name || "None";
+    });
 
     // Load saved state if it exists
     const savedState = loadStoryState();
     if (savedState && savedState.currentModule === module) {
       Object.entries(savedState.variables).forEach(([key, value]) => {
-        story.variablesState[key] = value;
+        // Only set variables that exist in the story
+        if (story.variablesState.hasOwnProperty(key)) {
+          story.variablesState[key] = value;
+        }
       });
     }
     
+    setStory(story);
+    console.log('Story state set');
+
     // Continue the story
     let text = '';
     while (story.canContinue) {
       text += story.Continue() + '\n';
     }
+    console.log('Story continued, text:', text);
 
-    setStory(story);
     setCurrentStoryModule(module);
-    
     setCurrentContent({
       text,
       choices: story.currentChoices,
@@ -137,21 +142,21 @@ export function StoryGame() {
   useEffect(() => {
     if (!drifterId) return;
     
-    // Load character data
+    console.log('Effect running with drifterId:', drifterId);
     try {
       const drifterIdInt = parseInt(drifterId);
       const character = getDrifter(drifterIdInt);
+      console.log('Character loaded:', character);
       setCharacterData(character as CharacterData);
+      loadStoryModule('main', character as CharacterData);
     } catch (err) {
+      console.error('Error in effect:', err);
       setCharacterError(err instanceof Error ? err : new Error('Failed to load character'));
     }
-
-    // Initialize with main story
-    loadStoryModule('main');
   }, [drifterId]);
 
   const handleChoice = (index: number) => {
-    if (!story) return;
+    if (!story || !characterData) return;
 
     story.ChooseChoiceIndex(index);
     
@@ -164,11 +169,11 @@ export function StoryGame() {
     // Check if we need to transition to a different story module
     const tags = story.currentTags;
     if (tags.includes('transition_to_bench')) {
-      loadStoryModule('the_bench');
+      loadStoryModule('the_bench', characterData);
       return;
     }
     if (tags.includes('transition_to_main')) {
-      loadStoryModule('main');
+      loadStoryModule('main', characterData);
       return;
     }
 

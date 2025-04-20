@@ -13,6 +13,10 @@ EXTERNAL getAbilityScore(ability)
 === function getAbilityScore(ability) ===
     ~ return 0
 
+EXTERNAL getEquipmentName(slot)
+=== function getEquipmentName(slot) ===
+    ~ return "None"
+
 // === Start of main story content ===
 VAR player_name = ""
 VAR current_location = "the_bench"
@@ -44,38 +48,43 @@ VAR has_visited_mission_board = false
 You review your gear carefully...
 
 ~ temp hasSuit = hasEquipment("suit", "any")
+~ temp suitName = getEquipmentName("suit")
 {not hasSuit:
     SUIT: Empty
 - else:
-    You're wearing a protective suit.
+    SUIT: {suitName}
 }
 
 ~ temp hasHeadgear = hasEquipment("headgear", "any")
+~ temp headgearName = getEquipmentName("headgear")
 {not hasHeadgear:
     No headgear equipped.
 - else:
-    Your headgear is in place.
+    HEADGEAR: {headgearName}
 }
 
 ~ temp hasAccessory = hasEquipment("accessory", "any")
+~ temp accessoryName = getEquipmentName("accessory")
 {not hasAccessory:
     No accessories equipped.
 - else:
-    You have an accessory equipped.
+    ACCESSORY: {accessoryName}
 }
 
 ~ temp hasBackpack = hasEquipment("backpack", "any")
+~ temp backpackName = getEquipmentName("backpack")
 {not hasBackpack:
     No backpack equipped.
 - else:
-    You have a backpack equipped.
+    BACKPACK: {backpackName}
 }
 
 ~ temp hasGraphic = hasEquipment("graphic", "any")
+~ temp graphicName = getEquipmentName("graphic")
 {not hasGraphic:
     No graphic equipped.
 - else:
-    You have a graphic equipped.
+    GRAPHIC: {graphicName}
 }
 
 + [Return to Hub]
