@@ -1,9 +1,26 @@
+-> hub
+
+// Declare external functions with fallbacks
+EXTERNAL hasEquipment(slot, itemName)
+=== function hasEquipment(slot, itemName) ===
+    ~ return false
+
+EXTERNAL checkSkill(skillName)
+=== function checkSkill(skillName) ===
+    ~ return 0
+
+EXTERNAL getAbilityScore(ability)
+=== function getAbilityScore(ability) ===
+    ~ return 0
+
+// === Start of main story content ===
 VAR player_name = ""
 VAR current_location = "the_bench"
 VAR has_visited_trading_post = false
 VAR has_visited_mission_board = false
 
--> hub
+
+
 
 === hub ===
 # location: the_bench
@@ -19,15 +36,50 @@ VAR has_visited_mission_board = false
     -> END
 + [Check your equipment]
     -> check_equipment
+    
+
 
 === check_equipment ===
 # location: equipment
-You review your gear.
-// This will eventually integrate with our equipment system
+You review your gear carefully...
+
+~ temp hasSuit = hasEquipment("suit", "any")
+{not hasSuit:
+    SUIT: Empty
+- else:
+    You're wearing a protective suit.
+}
+
+~ temp hasHeadgear = hasEquipment("headgear", "any")
+{not hasHeadgear:
+    No headgear equipped.
+- else:
+    Your headgear is in place.
+}
+
+~ temp hasAccessory = hasEquipment("accessory", "any")
+{not hasAccessory:
+    No accessories equipped.
+- else:
+    You have an accessory equipped.
+}
+
+~ temp hasBackpack = hasEquipment("backpack", "any")
+{not hasBackpack:
+    No backpack equipped.
+- else:
+    You have a backpack equipped.
+}
+
+~ temp hasGraphic = hasEquipment("graphic", "any")
+{not hasGraphic:
+    No graphic equipped.
+- else:
+    You have a graphic equipped.
+}
 
 + [Return to Hub]
-    Back to the central hub...
-    -> hub_choices
+    -> hub
 
 === hub_choices ===
 + [Visit The Bench]

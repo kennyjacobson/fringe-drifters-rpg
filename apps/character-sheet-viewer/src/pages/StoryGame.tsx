@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import mainStory from '../stories/main.ink.json' with { type: 'json' };
 import theBenchStory from '../stories/locations/the_bench.ink.json' with { type: 'json' };
 import { HomeButton } from '../components/HomeButton.js';
+import { getDrifter } from '@fringe-rpg/core';
+import type { CharacterData } from '../types/character.js';
 
 interface StoryContent {
   text: string;
@@ -21,6 +23,30 @@ interface StoryState {
   variables: Record<string, any>;
 }
 
+// Add this type near the top with the other interfaces
+type EquipmentSlot = 'suit' | 'headgear' | 'accessory' | 'backpack' | 'graphic';
+
+type AbilityScore = 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma';
+type SkillName = 
+  | 'acrobatics'
+  | 'athletics'
+  | 'deception'
+  | 'engineering'
+  | 'geology'
+  | 'intimidation'
+  | 'investigation'
+  | 'medicine'
+  | 'navigation'
+  | 'perception'
+  | 'performance'
+  | 'persuasion'
+  | 'piloting'
+  | 'scavenging'
+  | 'stealth'
+  | 'survival'
+  | 'toxicology'
+  | 'trading';
+
 export function StoryGame() {
   const { drifterId } = useParams();
   const [story, setStory] = useState<Story | null>(null);
@@ -30,6 +56,8 @@ export function StoryGame() {
     choices: [],
     tags: []
   });
+  const [characterData, setCharacterData] = useState<CharacterData | null>(null);
+  const [characterError, setCharacterError] = useState<Error | null>(null);
 
   // Load story state from local storage
   const loadStoryState = (): StoryState | null => {
@@ -52,6 +80,33 @@ export function StoryGame() {
     console.log('Loading module:', module);
     const story = new Story(storyContent);
 
+    // Bind external functions FIRST
+    story.BindExternalFunction("checkSkill", (skillName: SkillName): number => {
+      if (!characterData?.skills[skillName]) return 0;
+      return characterData.skills[skillName].modifier;
+    });
+
+    story.BindExternalFunction("hasEquipment", (slot: EquipmentSlot, itemName: string): boolean => {
+      if (itemName === "any") {
+        return characterData?.equipment[slot] !== null;
+      }
+      return characterData?.equipment[slot]?.name === itemName;
+    });
+
+    story.BindExternalFunction("getAbilityScore", (ability: AbilityScore): number => {
+      if (!characterData?.abilityScores[ability]) return 0;
+      return characterData.abilityScores[ability];
+    });
+
+    // Make character data available to ink
+    if (characterData) {
+      story.variablesState['character_ability_scores'] = characterData.abilityScores;
+      story.variablesState['character_skills'] = characterData.skills;
+      story.variablesState['character_equipment'] = characterData.equipment;
+      story.variablesState['character_ac'] = characterData.baseAC;
+      story.variablesState['character_resistances'] = characterData.resistances;
+    }
+
     // Load saved state if it exists
     const savedState = loadStoryState();
     if (savedState && savedState.currentModule === module) {
@@ -60,10 +115,10 @@ export function StoryGame() {
       });
     }
     
-    // Try multiple continues
-    let text = story.Continue();
-    if (story.canContinue) {
-      text = story.Continue();
+    // Continue the story
+    let text = '';
+    while (story.canContinue) {
+      text += story.Continue() + '\n';
     }
 
     setStory(story);
@@ -80,9 +135,20 @@ export function StoryGame() {
   };
 
   useEffect(() => {
+    if (!drifterId) return;
+    
+    // Load character data
+    try {
+      const drifterIdInt = parseInt(drifterId);
+      const character = getDrifter(drifterIdInt);
+      setCharacterData(character as CharacterData);
+    } catch (err) {
+      setCharacterError(err instanceof Error ? err : new Error('Failed to load character'));
+    }
+
     // Initialize with main story
     loadStoryModule('main');
-  }, [drifterId]); // Reload when drifterId changes
+  }, [drifterId]);
 
   const handleChoice = (index: number) => {
     if (!story) return;
@@ -90,7 +156,10 @@ export function StoryGame() {
     story.ChooseChoiceIndex(index);
     
     // Get next content
-    const text = story.Continue();
+    let text = '';
+    while (story.canContinue) {
+      text += story.Continue() + '\n';
+    }
 
     // Check if we need to transition to a different story module
     const tags = story.currentTags;
@@ -123,12 +192,7 @@ export function StoryGame() {
           <div className="text-sm text-green-600">Drifter ID: {drifterId}</div>
         </div>
         <div className="flex gap-4">
-          <button 
-            onClick={() => loadStoryModule('main')}
-            className="border border-green-700 px-3 py-1 text-sm bg-green-900/20 hover:bg-green-900/40"
-          >
-            [MAIN HUB]
-          </button>
+          
           <HomeButton />
         </div>
       </div>
@@ -158,6 +222,23 @@ export function StoryGame() {
           {currentContent.tags.map((tag, index) => (
             <div key={index}>{tag}</div>
           ))}
+        </div>
+      )}
+
+      {/* Character Stats Panel */}
+      {characterData && (
+        <div className="mt-4 text-xs text-green-600 border-t border-green-900 pt-2">
+          <div className="grid grid-cols-6 gap-2">
+            {Object.entries(characterData.abilityScores).map(([ability, score]) => (
+              <div key={ability} className="text-center">
+                <div className="font-bold">{ability.toUpperCase()}</div>
+                <div>{score}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-2">
+            AC: {characterData.baseAC} | Equipment: {characterData.equipment.suit?.name || 'None'}
+          </div>
         </div>
       )}
 
